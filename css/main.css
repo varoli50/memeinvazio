@@ -1,0 +1,72 @@
+:root {
+    --text-color: #17bd3e;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+}
+.tarolo {
+
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+}
+
+.focim {
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 500;
+    user-select: none;
+}
+
+.focim_zold{
+    color: var(--text-color);
+}
+.login{
+    background-color: var(--text-color);
+}
+
+.reg, .login{
+    border-radius: 20px;
+    padding: 15px;
+    width: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.reg:hover, .login:hover{
+    transform: scale(1.01);
+}
+
+#btnLogin{
+    color: white;
+}
+#btnReg{
+    color: var(--text-color);
+}
+
+#btnLogin, #btnReg{
+    font-size: 1.5rem;
+    background-color: inherit;
+    border: none;
+    cursor: pointer;
+}
+
+@media screen and (max-width:450px){
+    .login{
+        max-width: 340px;
+    }
+}
