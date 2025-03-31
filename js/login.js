@@ -12,11 +12,12 @@ async function login() {
         const response = await fetch('http://127.0.0.1:3000/api/auth/login', {
             method: 'POST',
             headers: {
-                'content-type:': 'application/json'
+                'content-type': 'application/json'
             },
             body: JSON.stringify({ email, psw }),
             credentials: 'include'
-        })
+        });
+        console.log(response);
         const data = await response.json()
         console.log(data)
 
