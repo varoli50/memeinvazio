@@ -90,6 +90,7 @@ main{
     justify-content: center;
     gap: 40px;
     padding: 40px;
+    flex-direction: column;
 }
 .newMeme{
     height: 300px;
@@ -113,6 +114,32 @@ main{
     transform: scale(1.1);
 }
 
+.newMeme>input{
+    display: none;
+}
+
+.uploadButton{
+    background-color: var(--text-color);
+    width: 500px;
+    padding: 15px;
+    border-radius: 1.25rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: ease 0.5s;
+}
+.uploadButton:hover{
+    transform: scale(1.1);
+}
+.uploadButton>button{
+    font-size: 1.5rem;
+    color: white;
+    background-color: var(--text-color);
+    border: none;
+    cursor: pointer;
+}
+
 /* hmbrgr menü 768px-től */
 @media screen and ( max-width:768px) {
     .hamburger-menu{
@@ -129,6 +156,9 @@ main{
         left: 0;
         font-size: 1.5rem;
         display: none;
+    }
+    .newMeme,.uploadButton{
+        width: 350px;
     }
     
 }
