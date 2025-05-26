@@ -1,19 +1,21 @@
+/* alap beállítások */
 :root {
-    --text-color: #17BD3E; 
+    --text-color: #17BD3E;
 }
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-html{
+html {
     font-family: Arial, Helvetica, sans-serif;
     background-color: silver;
 }
-/* Fejléc menü */
-header{
+
+/* ----- a fejléc a menüvel ----- */
+header {
     background-color: white;
     display: flex;
     align-items: center;
@@ -27,18 +29,19 @@ header{
     text-transform: uppercase;
     user-select: none;
 }
-.menu-logo-green{
+
+.menu-logo-green {
     color: var(--text-color);
 }
 
-/* Menü alapállapotban */
-
-nav{
+/*  menü alapállapotban */
+nav {
     display: flex;
     gap: 2rem;
     font-size: 2rem;
 }
-nav a{
+
+nav a {
     text-decoration: none;
     color: black;
     width: 60px;
@@ -49,19 +52,49 @@ nav a{
     align-items: center;
     transition: ease 500ms;
 }
-nav a:hover{
+
+nav a:hover {
     transform: scale(1.1);
 }
 
-.icon-home{
+.icon-home {
     background-color: silver;
 }
-.icon-logout{
+
+.icon-logout {
     background-color: red;
     color: white;
 }
-/*hozáadás "+" gomb*/
-.fixed{
+
+/* hamburger menü */
+.hamburger-menu {
+    background-color: white;
+    width: 30px;
+    height: 25px;
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.hamburger-menu span {
+    display: block;
+    height: 4px;
+    width: 100%;
+    border-radius: 2px;
+    background-color: black;
+}
+
+.menu-toggle {
+    display: none;
+}
+
+.menu-toggle:checked~nav {
+    display: flex;
+}
+
+/* --- hozzáadás plus gomb --- */
+.fixed {
     position: fixed;
     right: 30px;
     top: 70%;
@@ -76,47 +109,27 @@ nav a:hover{
     z-index: 1000;
     transition: ease 0.5s;
 }
-.fixed:hover{
+
+.fixed:hover {
     transform: scale(1.1);
 }
-.fixed > i{
+
+.fixed>i {
     color: white;
     font-size: 2.5rem;
 }
 
-/* hamburger menü */
-.hamburger-menu{
-    background-color: white;
-    width: 30px;
-    height: 25px;
-    display: none;
-}
-.hamburger-menu span {
-    display: block;
-    height: 4px;
-    width: 100%;
-    border-radius: 2px;
-    background-color: black;
-}
-
-.menu-toggle{
-    display: none;
-}
-
-.menu-toggle:checked~nav{
-    display: flex;
-}
-
-/* hmbrgr menü 768px-től */
-@media screen and ( max-width:768px) {
-    .hamburger-menu{
-        display:  flex;
+/* --- hamburger menü, plus gomb 768px-től --- */
+@media screen and (max-width: 768px) {
+    .hamburger-menu {
+        display: flex;
     }
-    nav{
+
+    nav {
         flex-direction: row;
-        justify-content: space-between;
+        justify-content: space-around;
         width: 100%;
-        border-color: white;
+        background-color: white;
         padding: 10px;
         position: absolute;
         top: 70px;
@@ -124,13 +137,144 @@ nav a:hover{
         font-size: 1.5rem;
         display: none;
     }
-    .fixed{
+
+    .fixed {
         width: 40px;
         height: 40px;
     }
 
-    .fixed > i {
+    .fixed>i {
         font-size: 2rem;
     }
 }
 
+/* sorminta */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: space-evenly;
+}
+
+/* kártyák */
+.card {
+    flex: 0 1 calc((100% - 40px) /5);
+    /* flex-grow: 0 vagy 1 lehet, a 0-val letiltjuk, hogy a kártya növekedhessen */
+    /* flex-shrink: 1; 0 vagy 1 lehet, 1-el megengedjük, hogy a kártyát lehessen kicsinyíteni */
+    /* flex-basis: calc((100% - 40px) /5); Ez a kiinduló szélességt, amit a böngésző megpróbál fentartani a kártyának */
+    background-color: white;
+    border: 1px solid #E0E0E0;
+    border-radius: 1.25rem;
+    box-shadow: 0 2px 4px rgb(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    overflow: hidden;
+    /* elrejtük a tartalom azon részét, ami kilóg */
+    transition: ease 0.5s;
+}
+
+.card:hover {
+    transform: scale(1.01);
+}
+
+.card img {
+    width: 100%;
+}
+
+/* kártya fejléc */
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 1rem;
+    background-color: inherit;
+}
+
+.card-header img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* kártya közepe */
+.card-body {
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+    border-radius: inherit;
+    background-color: inherit;
+    overflow: hidden;
+}
+
+.pic-div {
+    position: relative;
+    width: 100%;
+    padding-top: 100%;
+    border-radius: inherit;
+    background-color: white;
+    overflow: hidden;
+}
+
+.pic-div img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /*  tökéletesen középre igazítja a képet a div-en belül */
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    background-color: inherit;
+    border-radius: inherit;
+}
+
+/* kártya lábléce */
+.card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 10px;
+    background-color: inherit;
+}
+
+.card-footer span {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #333333;
+    background-color: inherit;
+}
+
+.card-footer i {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    font-size: 2.5rem;
+    cursor: pointer;
+    transition: ease 0.5s;
+}
+
+.card-footer i:hover {
+    transform: scale(1.01);
+}
+
+@media screen and (max-width: 850px) {
+    .card {
+        flex: 0 1 calc((100% - 40px) /2);
+    }
+}
+
+@media screen and (max-width: 426px) {
+    .card {
+        flex: 0 1 100%;
+    }
+}
+
+.like{
+    color: indianred;
+}
